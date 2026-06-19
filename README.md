@@ -108,7 +108,7 @@ Alejandro Darío Brizuela y Lautaro Gorge — TUPaD, UTN — 2026
 
 ## 🔗 Enlaces
 
-- [Manual de Usuario](https://drive.google.com/file/d/1aWhntbbqSjXRaYSGZI--U4vvNxMHjlNH/view?usp=sharing)
+- [Manual de Usuario](https://drive.google.com/file/d/1T672YvXflrnDuZdENjLC4qAstUIQLzqU/view?usp=sharing)
 - [Selección de Stack](https://drive.google.com/file/d/1c0F9aY1dy_vyeVZiWP3XDoxZa_XKaLzM/view?usp=sharing)
 - [Diccionario de Datos](https://drive.google.com/file/d/1nqbHhAVV-3odGIgzW2hb9rr2DWOYkevg/view?usp=sharing)
 - [Pruebas de estrés](https://drive.google.com/file/d/1ihPKd4QE-VCtYGgSQXrOp-AZWnMGpsQV/view?usp=sharing)
