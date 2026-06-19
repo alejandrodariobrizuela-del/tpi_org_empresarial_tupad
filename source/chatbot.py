@@ -2,8 +2,8 @@ import csv
 from datetime import datetime, timedelta
 
 # BASE DE DATOS (CSV)
-ARCHIVO_CSV = "empleados.csv"
-ARCHIVO_SOLICITUDES = "solicitudes.csv"
+ARCHIVO_CSV = "../data/empleados.csv"
+ARCHIVO_SOLICITUDES = "../data/solicitudes.csv"
 
 
 def cargar_empleados():
