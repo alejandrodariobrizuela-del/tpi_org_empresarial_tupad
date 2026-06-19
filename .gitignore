@@ -1,0 +1,16 @@
+# Archivos generados en tiempo de ejecución.
+solicitudes.csv
+data/solicitudes.csv
+
+# Entornos virtuales de Python
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración del editor
+.vscode/
