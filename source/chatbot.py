@@ -134,12 +134,12 @@ def procesar_mensaje(mensaje, empleados):
         if mensaje.lower() == "/start":
             estado_actual = "PEDIR_LEGAJO"
             return (
-                "¡Bienvenido al sistema de Gestión de Vacaciones!\n"
+                "👋 ¡Bienvenido al sistema de Gestión de Vacaciones!\n"
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 "Por favor, ingresá tu número de legajo para continuar:"
             )
         else:
-            return "< Para iniciar, escribí el comando: /start"
+            return "ℹ️< Para iniciar, escribí el comando: /start"
 
     # ESTADO: PEDIR_LEGAJO → valida legajo y consulta CSV
     # Gateway 1: ¿Existe el legajo?
@@ -149,7 +149,7 @@ def procesar_mensaje(mensaje, empleados):
         # Camino Infeliz: formato incorrecto
         if not es_valido:
             return (
-                "El legajo debe ser un número entero positivo.\n"
+                "⚠️ El legajo debe ser un número entero positivo.\n"
                 "Ejemplo: 1001\n"
                 "Por favor, ingresalo nuevamente:"
             )
@@ -168,10 +168,10 @@ def procesar_mensaje(mensaje, empleados):
         estado_actual = "PEDIR_DIAS"
 
         return (
-            f"Identidad verificada.\n"
+            f"✅ Identidad verificada.\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"Empleado : {emp['nombre']} {emp['apellido']}\n"
-            f"Saldo disponible: {emp['dias_disponibles']} días\n"
+            f"👤 Empleado : {emp['nombre']} {emp['apellido']}\n"
+            f"📅 Saldo disponible: {emp['dias_disponibles']} días\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
             f"¿Cuántos días de vacaciones querés solicitar?"
         )
@@ -184,7 +184,7 @@ def procesar_mensaje(mensaje, empleados):
         # Camino Infeliz: formato incorrecto
         if not es_valido:
             return (
-                "La cantidad de días debe ser un número entero positivo.\n"
+                "⚠️ La cantidad de días debe ser un número entero positivo.\n"
                 "Ejemplo: 5\n"
                 "Por favor, ingresala nuevamente:"
             )
@@ -226,7 +226,7 @@ def procesar_mensaje(mensaje, empleados):
         # Camino Infeliz: formato incorrecto o fecha pasada
         if not es_valida:
             return (
-                "Fecha inválida. Asegurate de:\n"
+                "⚠️ Fecha inválida. Asegurate de:\n"
                 "  • Usar el formato DD/MM/AAAA\n"
                 "  • Que la fecha no sea del pasado\n"
                 "Por favor, ingresala nuevamente:"
@@ -243,13 +243,13 @@ def procesar_mensaje(mensaje, empleados):
         fecha_fin = (fecha_dt + timedelta(days=dias - 1)).strftime("%d/%m/%Y")
 
         return (
-            f"RESUMEN DE TU SOLICITUD\n"
+            f"📋 RESUMEN DE TU SOLICITUD\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"Empleado    : {emp['nombre']} {emp['apellido']}\n"
-            f"Legajo      : {sesion['legajo']}\n"
-            f"Desde       : {fecha}\n"
-            f"Hasta       : {fecha_fin}\n"
-            f"Días solicitados: {dias}\n"
+            f"👤 Empleado    : {emp['nombre']} {emp['apellido']}\n"
+            f"🔢 Legajo      : {sesion['legajo']}\n"
+            f"📅 Desde       : {fecha}\n"
+            f"📅 Hasta       : {fecha_fin}\n"
+            f"🗓️ Días solicitados: {dias}\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
             f"¿Confirmás la solicitud?\n"
             f"  SI → Escribí 'si'\n"
@@ -274,7 +274,7 @@ def procesar_mensaje(mensaje, empleados):
 
             estado_actual = "FIN"
             return (
-                f"¡SOLICITUD REGISTRADA CON ÉXITO!\n"
+                f"✅ ¡SOLICITUD REGISTRADA CON ÉXITO!\n"
                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 f"Tu solicitud fue enviada con estado: PENDIENTE\n"
                 f"Recibirás la aprobación de tu jefe a la brevedad.\n"
@@ -287,13 +287,13 @@ def procesar_mensaje(mensaje, empleados):
         elif mensaje.lower() in ["no", "n"]:
             estado_actual = "FIN"
             return (
-                "Solicitud cancelada.\n"
+                "✖️ Solicitud cancelada.\n"
                 "Tus días disponibles no fueron modificados.\n"
                 "Para iniciar una nueva solicitud, escribí /start"
             )
         else:
             return (
-                "Respuesta no reconocida.\n"
+                "⚠️ Respuesta no reconocida.\n"
                 "Por favor escribí 'si' para confirmar o 'no' para cancelar:"
             )
 
@@ -302,13 +302,13 @@ def procesar_mensaje(mensaje, empleados):
         if mensaje.lower() == "/start":
             reiniciar_sesion()
             return (
-                "Nueva solicitud iniciada.\n"
+                "🔄 Nueva solicitud iniciada.\n"
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 "Por favor, ingresá tu número de legajo:"
             )
         else:
             return (
-                "ℹEl proceso ha finalizado.\n"
+                "ℹ️ El proceso ha finalizado.\n"
                 "Para iniciar una nueva solicitud, escribí /start"
             )
 
@@ -328,24 +328,24 @@ def main():
         print("[ERROR CRÍTICO] No se pudo cargar la base de datos. Verificá el archivo empleados.csv")
         return
 
-    print("Bot: Para iniciar, escribí /start\n")
+    print("🤖 Bot: Para iniciar, escribí /start\n")
 
     while True:
         try:
-            entrada = input("Vos: ").strip()
+            entrada = input("👤 Vos: ").strip()
         except KeyboardInterrupt:
             print("\n\n[Sistema] Programa cerrado.")
             break
 
         if entrada.lower() == "salir":
-            print("Bot: ¡Hasta luego!")
+            print("🤖 Bot: ¡Hasta luego!")
             break
 
         if not entrada:
             continue
 
         respuesta = procesar_mensaje(entrada, empleados)
-        print(f"\nBot: {respuesta}\n")
+        print(f"\n🤖 Bot: {respuesta}\n")
 
 
 if __name__ == "__main__":
